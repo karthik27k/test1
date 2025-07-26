@@ -1,0 +1,17 @@
+
+Create a DB User for API
+
+sql
+CopyEdit
+CREATE USER 'jenkins_user'@'%' IDENTIFIED BY 'your_strong_password';
+GRANT ALL PRIVILEGES ON jenkins_pipeline_db.* TO 'jenkins_user'@'%';
+FLUSH PRIVILEGES;
+EXIT;
+Allow External Connections (Optional)
+Edit MySQL config:
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+Change:
+bind-address = 127.0.0.1
+to:
+bind-address = 0.0.0.0
+Then:
